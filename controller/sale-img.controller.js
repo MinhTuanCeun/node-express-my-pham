@@ -1,8 +1,7 @@
-const Catalog = require('../models/catalog.model');
-const ObjectId = require('mongodb').ObjectID;
+const SaleImg = require('../models/sale-img.model');
 
-exports.findAll = (req, res) => {
-    Catalog.find({})
+exports.findImgSale = (req, res) => {
+    SaleImg.find({}).limit(2)
         .then((result) => {
             res.send(result);
         }).catch((err) => {
@@ -12,9 +11,9 @@ exports.findAll = (req, res) => {
         });
 }
 
-exports.findById = (req, res) => {
-    const id = req.params.id;
-    Catalog.findOne({ _id: ObjectId(id) })
+
+exports.findFullBanner = (req, res) => {
+    SaleImg.findOne({ banner: true })
         .then((result) => {
             res.send(result);
         }).catch((err) => {
